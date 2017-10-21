@@ -1,0 +1,38 @@
+.loginform
+{
+	padding: 2%;
+	margin: 5%;
+	background: linear-gradient(#fdfefe,#d5dbdb);
+	color: #566573;
+	background-color:#f4f6f7;
+	border-style: solid;
+	border-color: #fdfefe;
+	border-width: 3px;
+	border-radius: 5px;
+}
+body
+{
+	background: radial-gradient(circle,#85929e,#5d6d7e);
+}
+.signup
+{
+	background-color: #7b241c;
+	color:white;
+	font-weight:bold;
+}
+.login
+{
+	background-color: #d35400;
+	color:white;
+	font-weight:bold;
+}
+table
+{
+	border-collapse: separate;
+	border-spacing: 5px 10px;
+}
+a:hover
+{
+	text-decoration:none;
+	color:yellow;
+}

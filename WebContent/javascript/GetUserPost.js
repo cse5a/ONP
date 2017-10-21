@@ -1,0 +1,20 @@
+app.controller("mycontroller_GetUserPost",function($scope,$http){
+	$scope.myjson={};
+	$scope.myjson.id=$scope.id;
+	$scope.my_secondJson={}
+	$http.post("GetUserPost",$scope.myjson).then(function(response){
+		$scope.mylist=response.data.mylist;
+	},function(error)
+	{
+		
+	});
+	$scope.setThePost=function()
+	{
+		$scope.my_secondJson.name=$scope.mylist[$scope.my_post_no].name;
+		$scope.my_secondJson.body=$scope.mylist[$scope.my_post_no].body;
+		$scope.my_secondJson.work=$scope.mylist[$scope.my_post_no].work;
+		$scope.my_secondJson.categoryId=$scope.mylist[$scope.my_post_no].categoryId;
+		$scope.my_secondJson.postid=$scope.mylist[$scope.my_post_no].postid;
+		alert($scope.my_secondJson.categoryId);
+	}
+});

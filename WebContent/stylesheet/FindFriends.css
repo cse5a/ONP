@@ -1,0 +1,30 @@
+body
+{
+	 background: white;
+	 font-size:15px;
+	 padding:5%;
+}
+.wrapper
+{
+	background: white;
+	border-style: solid;
+	border-color:  #fdfefe;
+	border-width: 3px;
+	border-radius: 5px;
+	padding:2%;
+	margin-top:2%;
+	color:  #85929e;
+	height: 300px;
+	display: block;
+	overflow:scroll;
+	overflow-x: hidden;
+}
+table
+{
+	border-collapse: separate;
+	border-spacing: 5px 15px;
+}
+a
+{
+	color: #708090
+}

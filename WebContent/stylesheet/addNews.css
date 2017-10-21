@@ -1,0 +1,71 @@
+#txtBody
+{
+	height: 400px;
+}
+.post
+{
+	background: linear-gradient( #fbfcfc,#fdfefe);
+	border-style: solid;
+	border-color: #fdfefe;
+	border-width: 3px;
+	border-radius: 5px;
+}
+.myform
+{
+	width: 100%;
+	padding: 2%;
+	color: #708090;
+}
+body
+{
+	 background: white;
+	 font-size:15px;
+}
+a
+{
+	color: #708090;
+}
+a:hover
+{
+	text-decoration: none;
+	color:brown;
+}
+table
+{
+	border-collapse: separate;
+	border-spacing: 5px 15px;
+}
+.login
+{
+	background-color: #7b241c;
+	color:white;
+	font-weight:bold;
+}
+.login:hover
+{
+	color: #f9e79f;
+}
+#image11
+{
+	color:red;
+}
+#image12
+{
+	color:red;
+}
+#image21
+{
+	color:red;
+}
+#image22
+{
+	color:red;
+}
+#image31
+{
+	color:red;
+}
+#image32
+{
+	color:red;
+}

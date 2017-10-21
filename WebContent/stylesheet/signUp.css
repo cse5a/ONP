@@ -1,0 +1,31 @@
+body
+{
+	background: radial-gradient(circle,#85929e,#5d6d7e); 
+}
+.wrapper
+{
+	width:50%;
+	background: linear-gradient(#fdfefe,#d5dbdb);
+	border-style: solid;
+	border-color:  #fdfefe;
+	border-width: 3px;
+	border-radius: 5px;
+	padding:2%;
+	margin-top:5%;
+	color:  #566573;
+}
+table
+{
+	width:100%;
+}
+.error
+{
+	color:red;
+}
+.btnsubmit
+{
+	background-color:  #5d6d7e;
+	width:75%;
+	color:white;
+	font-weight:bold;
+}

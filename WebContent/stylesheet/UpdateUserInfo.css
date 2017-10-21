@@ -1,0 +1,15 @@
+@CHARSET "ISO-8859-1";
+.heading_edityouraccount
+{
+	color:  #2471a3;
+	margin-top:5%
+}
+.mytable
+{
+	margin-left: 10%;
+	width:50%;
+}
+.mytable td
+{
+	padding:1%;
+}

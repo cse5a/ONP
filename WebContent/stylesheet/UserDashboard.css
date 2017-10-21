@@ -1,0 +1,167 @@
+@CHARSET "ISO-8859-1";
+.myheader
+{
+	background:linear-gradient(to bottom right,#dc7633, #873600);
+	color:white;
+	margin:0px;
+	margin-bottom: 2%;
+}
+.mynavbar
+{
+	margin:0px;
+}
+.myfooter
+{
+	color:white;
+	width:100%;
+	background-color: #1b2631;
+	height:300px;
+	bottom:0;
+}
+.mymainSection
+{
+	height:500px;
+}
+.mySection
+{
+	width:100%;
+	height:1500px;
+	display:block;
+}
+.addNews_Button
+{
+	background-color: #7b241c;
+	color:white;
+	font-weight:bold;
+}
+.addNews_Button:hover
+{
+	color: #f9e79f;
+}
+.addNews_Div
+{
+	margin-top:5%;
+	margin-bottom:3%;
+	padding:2%;
+	width:90%;
+	border-radius:2px;
+	border:dashed 5px black;
+	overflow:auto;
+	height:1100px;
+}
+.addNews_SecondDiv
+{
+	margin-top:5%;
+	margin-bottom:3%;
+	padding:3%;
+	width:80%;
+	border-radius:2px;
+	border:dashed 5px #641e16;
+	color:#943126;
+	
+}
+.addNews_Table
+{
+	width:100%;
+	padding:2%;
+}
+.addNews_Table tr
+{
+}
+.addNews_Table td
+{
+	padding: 1%;
+}
+.table_UserSearch
+{
+	margin-top:5%;
+	margin-bottom:5%;
+}
+.table_UserSearch td
+{
+	width:50%;
+}
+.userList_Div
+{
+	height:800px;
+	border:dashed 5px #641e16;
+	padding:5%;
+	overflow:auto;
+	width:100%;
+}
+.follow_Button
+{
+	background-color: #8e44ad;
+	color:white;
+	font-weight:bold;
+}
+.follow_Button:hover
+{
+	color:yellow;
+}
+.following_countDiv
+{
+	margin-top:5%;
+	padding:3%;
+	box-shadow: 3px 3px 3px black;
+}
+.allUser_Button
+{
+	background-color: #566573;
+	color:white;
+	font-weight:bold;
+}
+.allUser_Button:hover
+{
+	color:yellow; 
+}
+.unfollow_Button
+{
+	background-color:#c0392b;
+	color:white;
+	font-weight:bold;
+	font-size:small;
+	font-style:italic;
+}
+.unfollow_Button:hover
+{
+	color:yellow; 
+}
+.messageBox_div
+{
+	overflow:auto;
+	padding:2%;
+	height:300px;
+	width:100%;
+	overflow:auto;
+}
+.messageBox_div_wrapper
+{
+	
+	width:100%;
+}
+.message_section
+{
+	height:900px;
+	border:dashed 5px #34495e;
+	overflow:auto;
+	padding:3%;
+}
+.send_Button
+{
+	background-color:#2874a6;
+	color:white;
+	font-weight:bold;
+	font-size:small;
+	width:60%;
+}
+..addNews_Div
+{
+	margin-top:5%;
+	margin-bottom:3%;
+	padding:2%;
+	border-radius:2px;
+	border:dashed 5px black;
+	overflow:auto;
+	height:1100px;
+}
