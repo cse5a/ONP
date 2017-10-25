@@ -16,7 +16,7 @@
 				<table style="width:100%">
 					<tr>
 						<td><h2><b>Login User</b></h2></td>
-						<td style="text-align:right">Cancel</td>
+						<td style="text-align:right"><a href="index.jsp">Cancel</a></td>
 					</tr>
 					<tr>
 						<td><b>Email</b></td>

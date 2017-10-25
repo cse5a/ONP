@@ -155,13 +155,16 @@
 	font-size:small;
 	width:60%;
 }
-..addNews_Div
+.updateNews_Div
 {
-	margin-top:5%;
 	margin-bottom:3%;
 	padding:2%;
 	border-radius:2px;
 	border:dashed 5px black;
 	overflow:auto;
 	height:1100px;
+}
+.div_EditAndDelete
+{
+	margin-top:5%;
 }

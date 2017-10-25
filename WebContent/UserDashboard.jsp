@@ -19,9 +19,11 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="javascript/angular.min.js"></script>
 <script src="javascript/myModule.js"></script>
+<script src="javascript/Discussion.js"></script>
 <script src="javascript/UserFriends.js"></script>
 <script src="javascript/SearchFriends.js"></script>
 <script src="javascript/Update_Validation.js"></script>
+<script src="javascript/UpdateNews.js"></script>
 <script src="javascript/Message.js"></script>
 <script src="javascript/addNews.js"></script>
 <script src="javascript/GetWall.js"></script>
@@ -44,7 +46,7 @@
 			<a class="navbar-brand" href="#">Democratic</a>
 		</div>
 		<ul class="nav navbar-nav navbar-right">
-			<li><a>Home</a></li>
+			<li><a href="index.jsp">Home</a></li>
 			<li><a href="UserLogoutController">Logout</a></li>
 		</ul>
 	</div>
@@ -67,7 +69,7 @@
 	<!-- ================================================================= WebPage Main Section ================================================================= -->
 	<section class="mySection" ng-app="myapp" ng-init="id=${id}">
 	<!-- ======================================= Discussion Section Start ======================================= -->
-	<section class="col-sm-3">
+	<section class="col-sm-3" ng-controller="getControl_Discussion">
 		<div>
 			<h5><b>{{my_discussion[flag].topic}}</b></h5>
 			<p>{{my_discussion[flag].text}}</p>
@@ -85,7 +87,7 @@
 				<form name="myform">
 					<!-- ===================================== Working On This Filed =================================== -->
 					<input type="text" id="userComment" placeholder="Comment" ng-model="mycomment" name="mytext" required pattern="[a-zA-Z0-9 ]+"/>
-					<input type="button" value="comment" ng-click="insertComment(id,'${userObject.getUserName()}','${userObject.getUserEmail()}')" />
+					<input type="button" value="comment" ng-click="insertComment('${userObject.getUserName()}','${userObject.getUserEmail()}')" />
 					<!-- ===================================== Working On This Filed =================================== -->
 				</form>
 			</div>
@@ -231,16 +233,28 @@
 		<!-- ===================== Add your news End ====================== -->
 		<!-- ===================== Edit & delete post Start ===================== -->
 		<div id="menu3" class="tab-pane fade" ng-controller="mycontroller_GetUserPost">
-		 	<select ng-change="setThePost()"  ng-model="my_post_no">
-		 		<option ng-repeat="x in mylist" value="{{$index}}">{{x.name}}</option>
-		 	</select>
+			<div class="div_EditAndDelete">
+			<div class="col-sm-4">
+				<table style="width:100%">
+					<tr>
+						<td style="width:90%">
+						 	<select ng-change="setThePost()"  ng-model="my_post_no" class="form-control">
+						 		<option selected ng-repeat="x in mylist" value="{{$index}}">{{x.name}}</option>
+					 		</select>
+					 	</td>
+					 	<td style="width:10%">
+					 		<input type="button" value="Delete" class="btn btn-danger" ng-click="DeletePost()" ng-disabled="my_secondJson.postid==undefined"/>
+					 	</td>
+				 	</tr>
+			 	</table>
+		 	</div>
 		 	<!-- ========================= Add And Delete Your Post Working ============================= -->
-		 	<div class="col-sm-8 addNews_Div">
-		 	<form method="POST" action="UserPost?id=${id}" enctype="multipart/form-data">
-							<table class="addNews_Table" cellspacing="10">
+		 	<div class="col-sm-8 updateNews_Div">
+		 	<form method="POST" action="{{url}}" enctype="multipart/form-data">
+							<table class="addNews_Table">
 								<tr>
-									<td style="width:30%"><b style="color:#34495e">Post Name</b></td>
-									<td style="width:90%"><input type="text" class="form-control" name="postName" ng-model="my_secondJson.name"/></td>
+									<td style="width:40%"><b style="color:#34495e">Post Name</b></td>
+									<td style="width:60%"><input type="text" class="form-control" name="postName" ng-model="my_secondJson.name"/></td>
 								</tr>
 								<tr>
 									<td><b style="color:#34495e">Post Category</b></td>
@@ -275,45 +289,48 @@
 									</td>
 								</tr>
 								<tr>
-									<td><b style="color:#34495e">First Image</b></td>
-									<td style="overflow:hidden"><input type="file" class="btn btn-info" name="postImage1" id="postImage1" style="width:100%" onchange="Image1();" required/></td>
+									<td><b style="color:#34495e" data-toggle="collapse" data-target="#image1">First Image&nbsp;&nbsp;<small style="color:red">Click to see your previous page</small></b></td>
+									<td style="overflow:hidden"><input type="file" class="btn btn-info" name="postImage1" id="postImage1_u" style="width:100%" onchange="Image1_u();" required/></td>
 								</tr>
 								<tr>
-									<td colspan="2"><small id="image11" style="display:none;color:red"><b>Invalid Image Format</b></small><small id="image12" style="display:none;color:red"><b>Size is not suitable</b></small></td>
+									<td colspan="2"><small id="image11_u" style="display:none;color:red"><b>Invalid Image Format</b></small><small id="image12_u" style="display:none;color:red"><b>Size is not suitable</b></small></td>
 								</tr>
 								<tr>
-									<td><a><image src="GetPost?image=7&id={{my_secondJson.postid}}" width="400px" height="300px"/></a></td>
+									<td><div class="collapse" id="image1"><a><image src="GetPost?image=7&id={{my_secondJson.postid}}" width="400px" height="300px"/></a></div></td>
 								</tr>
 								<tr>
-									<td><b style="color:#34495e">Second Image</b></td>
-									<td style="overflow:hidden"><input type="file" class="btn btn-info" name="postImage2" id="postImage2" style="width:100%" onchange="Image2();" required/></td>
+									<td><b style="color:#34495e" data-toggle="collapse" data-target="#image2">Second Image&nbsp;&nbsp;<small style="color:red">Click to see your previous page</small></b></td>
+									<td style="overflow:hidden"><input type="file" class="btn btn-info" name="postImage2" id="postImage2_u" style="width:100%" onchange="Image2_u(this.id);" required/></td>
 								</tr>
 								<tr>
-									<td colspan="2"><small id="image21" style="display:none;color:red"><b>Invalid Image Format</b></small><small id="image22" style="display:none;color:red"><b>Size is not suitable</b></small></td>
+									<td colspan="2"><small id="image21_u" style="display:none;color:red"><b>Invalid Image Format</b></small><small id="image22_u" style="display:none;color:red"><b>Size is not suitable</b></small></td>
 								</tr>
 								<tr>
-									<td><a><image src="GetPost?image=8&id={{my_secondJson.postid}}" width="400px" height="300px"/></a></td>
+									<td><div class="collapse" id="image2"><a><image src="GetPost?image=8&id={{my_secondJson.postid}}" width="400px" height="300px"/></a></div></td>
 								</tr>
 								<tr>
-									<td><b style="color:#34495e">Video</b></td>
-									<td style="overflow:hidden"><input type="file" class="btn btn-info" name="postVideo1" id="postVideo1" style="width:100%" onchange="Video1();" required/></td>
+									<td data-toggle="collapse" data-target="#video"><b style="color:#34495e">Video&nbsp;&nbsp;<small style="color:red">Click to see your previous page</small></b></td>
+									<td style="overflow:hidden"><input type="file" class="btn btn-info" name="postVideo1" id="postVideo1_u" style="width:100%" onchange="Video1_u(this.id);" required/></td>
 								</tr>
 								<tr>
-									<td colspan="2"><small id="image31" style="display:none;color:red"><b>Invalid Video Format</b></small><small id="image32" style="display:none;color:red"><b>Size is not suitable</b></small></td>
+									<td colspan="2"><small id="image31_u" style="display:none;color:red"><b>Invalid Video Format</b></small><small id="image32_u" style="display:none;color:red"><b>Size is not suitable</b></small></td>
 								</tr>
 								<tr>
 									<td>
-										<video width="500" height="240" controls ng-src="GetPost?image=9&id={{my_secondJson.postid}}" type="video/mp4">
-										</video> 
+										<div class="collapse" id="video">
+											<video width="500" height="240" controls ng-src="GetPost?image=9&id={{my_secondJson.postid}}" type="video/mp4">
+											</video> 
+										</div>
 									</td>
 								</tr>
 								<tr>
-									<td colspan="2"><center><input type="submit" name="Post" id="add" class="form-control btn addNews_Button" value="Post" onclick="return checkFiles();" style="width:40%"/></center></td>
+									<td colspan="2"><center><input type="submit" name="Post" id="add" class="form-control btn addNews_Button" value="Update Post" onclick="return checkFiles();" style="width:40%"/></center></td>
 								</tr>
 							</table>
 						</form>
-						</div>
-						<!-- =============================================== Working ===================================== -->
+					</div>
+			</div>
+			<!-- =============================================== Working ===================================== -->
 	    </div>
 		<!-- ===================== Edit & delete post End ======================= -->
 		<!-- ===================== Following Section ====================== -->

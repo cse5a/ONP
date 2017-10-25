@@ -23,6 +23,17 @@ app.controller("getControl_Discussion",function($scope,$http,$interval){
 				$scope.flag--;
 			}
 		}
+		$scope.insertComment=function(name,email)
+		{
+			$http.post("PostComment","{\"id\":\""+$scope.my_discussion[$scope.flag].id+"\",\"name\":\""+name+"\",\"email\":\""+email+"\",\"text\":\""+$scope.mycomment+"\"}").then(function(response){
+				alert("Hello Working");
+				$scope.mycomment=null;
+			},
+			function(error)
+			{
+				alert("Hello Error");
+			});
+		}
 		$interval(function(){
 			$http.post("GetComments","{\"id\":\""+$scope.my_discussion[$scope.flag].id+"\"}").then(function(response){
 				$scope.comments=response.data.mycomments;
@@ -31,16 +42,5 @@ app.controller("getControl_Discussion",function($scope,$http,$interval){
 				
 			});
 		},1000);
+		
 	});
-	app.controller("postComment_Discussion",function($scope,$http){
-		$scope.insertComment=function(id,name,email)
-		{
-			$http.post("PostComment","{\"id\":\""+id+"\",\"name\":\""+name+"\",\"email\":\""+email+"\",\"text\":\""+$scope.mycomment+"\"}").then(function(response){
-				$scope.mycomment=null;
-			},
-			function(error)
-			{
-				
-			});
-		}
-	})
